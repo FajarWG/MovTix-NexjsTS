@@ -8,7 +8,7 @@ export async function GET() {
   try {
     const transaction = await prisma.transaction.findMany({
       where: {
-        user_id: user?.id,
+        user_id: user.id,
       },
       include: {
         movie: true,
