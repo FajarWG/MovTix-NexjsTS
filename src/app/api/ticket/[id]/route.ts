@@ -1,8 +1,7 @@
 import prisma from "@/lib/prismadb";
-import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest, context: { params: any }) {
+export async function GET(req: Request, context: { params: any }) {
   const id = req.url?.split("/")[5];
 
   try {

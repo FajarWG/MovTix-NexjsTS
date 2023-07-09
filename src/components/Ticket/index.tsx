@@ -30,7 +30,6 @@ interface Showtime {
 }
 
 const Ticket = ({ ticket }: TicketProps) => {
-  console.log(ticket);
   const { showtime, movie, booking_code, date, transaction, seat } = ticket;
 
   const { Canvas } = useQRCode();

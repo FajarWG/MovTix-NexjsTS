@@ -11,8 +11,6 @@ const Navbar = ({ currentUser }: any) => {
   const [state, setState] = useState(false);
   const menuBtnEl = useRef() as any;
 
-  console.log(currentUser);
-
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Movies", href: "/movies" },

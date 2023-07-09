@@ -13,7 +13,6 @@ import Loading from "@/components/Loading";
 const Page = () => {
   const router = useRouter();
   const { data, isLoading } = useTransaction();
-  console.log(data);
 
   const handleCancel = async ({
     idTransaction,
