@@ -38,7 +38,7 @@ const Ticket = ({ ticket }: TicketProps) => {
     <div className="flex flex-col items-center justify-center text-white">
       <div className="flex flex-col bg-gray-800 rounded-lg shadow-md p-4 mb-4">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-sm font-semibold text-white mr-2">
+          <h3 className="text-sm font-semibold text-white mr-6">
             {movie.title}
           </h3>
           <Image
@@ -62,7 +62,11 @@ const Ticket = ({ ticket }: TicketProps) => {
           />
           <p className="text-gray-300 text-xs mt-1">{booking_code}</p>
           <p className="text-white text-sm font-bold mt-1">Scan QR Code</p>
+          <span className="text-gray-300 text-xs mt-1 text-center">
+            --------------------------
+          </span>
         </div>
+
         <div className="flex rounded-lg p-1 justify-between text-xs">
           <p></p>
           <p>
