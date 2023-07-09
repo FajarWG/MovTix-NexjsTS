@@ -4,7 +4,7 @@
 import useTransaction from "@/hooks/useTransaction";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import CardTransaction from "@/components/CardTransaction";
 import { CancelTransaction, Transaction } from "@/types/";

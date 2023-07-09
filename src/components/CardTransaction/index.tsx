@@ -96,7 +96,7 @@ interface Tickets {
 }
 
 const CardTransaction = ({ transaction, handleCancel }: TransactionProps) => {
-  const data: Transaction = transaction;
+  const [data, setData] = useState<Transaction>(transaction);
   const [opened, { open, close }] = useDisclosure(false);
   const [ticket, setTicket] = useState<Tickets>({
     id: "",
@@ -125,6 +125,29 @@ const CardTransaction = ({ transaction, handleCancel }: TransactionProps) => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleClick = () => {
+    setData((prev) => ({
+      ...prev,
+      status: "Cancel",
+    }));
+
+    handleCancel({
+      idTransaction: data.id,
+      idShowtime: data.showtime_id,
+      idTicket: data.Ticket[0].id,
+      seats: data.bookinng_seats,
+      time: data.showtime?.time,
+    });
+  };
+
+  const testClick = () => {
+    setData((prev) => ({
+      ...prev,
+      status: "Cancel",
+    }));
+    console.log(data);
   };
 
   useEffect(() => {
@@ -205,15 +228,7 @@ const CardTransaction = ({ transaction, handleCancel }: TransactionProps) => {
                   new Date(data.date).toLocaleDateString() !=
                     new Date().toLocaleDateString() || data.status != "Success"
                 }
-                onClick={() =>
-                  handleCancel({
-                    idTransaction: data.id,
-                    idShowtime: data.showtime_id,
-                    idTicket: data.Ticket[0].id,
-                    seats: data.bookinng_seats,
-                    time: data.showtime?.time,
-                  })
-                }
+                onClick={handleClick}
               />
               <Button
                 text="Check Ticket"

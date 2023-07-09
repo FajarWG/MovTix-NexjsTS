@@ -205,8 +205,9 @@ const MovieDetails = ({ params }: any) => {
         )}
         <div className="grid grid-cols-8 gap-2 justify-center">
           {Object.keys(seats).map((seat) => (
-            <div
+            <button
               key={seat}
+              disabled={isLoading}
               className={`p-1 rounded-lg ${
                 seats[seat]
                   ? "bg-gray-400 text-white cursor-pointer"
@@ -215,7 +216,7 @@ const MovieDetails = ({ params }: any) => {
               onClick={() => handleSeatClick(seat)}
             >
               <span>{seat}</span>
-            </div>
+            </button>
           ))}
           <div className="col-span-8 flex justify-center mt-4">
             <div className="w-full bg-gray-800 text-white text-center rounded-lg">
