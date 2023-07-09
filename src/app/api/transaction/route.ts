@@ -1,9 +1,8 @@
 import prisma from "@/lib/prismadb";
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 import getCurrentUser from "@/actions/getCurrents";
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET() {
   const user = (await getCurrentUser()) as any;
 
   try {

@@ -1,12 +1,7 @@
 import prisma from "@/lib/prismadb";
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "GET") {
-    return res.status(405).end();
-  }
-
+export async function GET() {
   try {
     const movies = await prisma.movies.findMany({
       orderBy: {
