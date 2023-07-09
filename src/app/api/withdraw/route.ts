@@ -13,6 +13,17 @@ export async function POST(req: Request) {
     return NextResponse.error();
   }
 
+  if (currentUser.balance < parseInt(value)) {
+    return NextResponse.json(
+      {
+        error: "Your balance is not enough",
+      },
+      {
+        status: 400,
+      }
+    );
+  }
+
   const user = await prisma.user.update({
     where: {
       id: currentUser.id,

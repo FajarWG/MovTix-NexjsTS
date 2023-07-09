@@ -14,11 +14,15 @@ const Page = () => {
   const onClickHandler = async () => {
     if (!amount) return toast.error("Please input amount");
     setIsLoading(true);
-    await axios.post("/api/withdraw", {
-      value: amount,
-    });
+    try {
+      await axios.post("/api/withdraw", {
+        value: amount,
+      });
+      toast.success("Withdraw success");
+    } catch (err: any) {
+      toast.error(err.response.data.error);
+    }
     router.refresh();
-    toast.success("Withdraw success");
     setAmount(0);
     setIsLoading(false);
   };

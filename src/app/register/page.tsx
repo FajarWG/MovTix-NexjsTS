@@ -39,7 +39,8 @@ const Page = () => {
         }, 2500);
       })
       .catch((err: any) => {
-        toast.error("Something went wrong");
+        console.log(err);
+        toast.error("Username already exists");
       })
       .finally(() => {
         setIsLoading(false);
