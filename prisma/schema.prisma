@@ -1,0 +1,147 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type ShowtimesSeats {
+  A1 Boolean
+  A2 Boolean
+  A3 Boolean
+  A4 Boolean
+  A5 Boolean
+  A6 Boolean
+  A7 Boolean
+  A8 Boolean
+  B1 Boolean
+  B2 Boolean
+  B3 Boolean
+  B4 Boolean
+  B5 Boolean
+  B6 Boolean
+  B7 Boolean
+  B8 Boolean
+  C1 Boolean
+  C2 Boolean
+  C3 Boolean
+  C4 Boolean
+  C5 Boolean
+  C6 Boolean
+  C7 Boolean
+  C8 Boolean
+  D1 Boolean
+  D2 Boolean
+  D3 Boolean
+  D4 Boolean
+  D5 Boolean
+  D6 Boolean
+  D7 Boolean
+  D8 Boolean
+  E1 Boolean
+  E2 Boolean
+  E3 Boolean
+  E4 Boolean
+  E5 Boolean
+  E6 Boolean
+  E7 Boolean
+  E8 Boolean
+  F1 Boolean
+  F2 Boolean
+  F3 Boolean
+  F4 Boolean
+  F5 Boolean
+  F6 Boolean
+  F7 Boolean
+  F8 Boolean
+  G1 Boolean
+  G2 Boolean
+  G3 Boolean
+  G4 Boolean
+  G5 Boolean
+  G6 Boolean
+  G7 Boolean
+  G8 Boolean
+  H1 Boolean
+  H2 Boolean
+  H3 Boolean
+  H4 Boolean
+  H5 Boolean
+  H6 Boolean
+  H7 Boolean
+  H8 Boolean
+}
+
+model Movies {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  age_rating   Int
+  description  String
+  id_          Int           @map("id")
+  poster_url   String
+  release_date String
+  ticket_price Int
+  title        String
+  status       String        @default("upcoming") // upcoming, now_playing, finished
+  Transaction  Transaction[]
+  Ticket       Ticket[]
+}
+
+model Showtimes {
+  id          String         @id @default(auto()) @map("_id") @db.ObjectId
+  movie_id    String
+  seats       ShowtimesSeats
+  time        String
+  Transaction Transaction[]
+  Ticket      Ticket[]
+}
+
+model Ticket {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id        String   @db.ObjectId
+  movie_id       String   @db.ObjectId
+  transaction_id String   @db.ObjectId
+  showtime_id    String   @db.ObjectId
+  booking_code   String   @unique @default(cuid())
+  seat           String[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user        User        @relation(fields: [user_id], references: [id])
+  movie       Movies      @relation(fields: [movie_id], references: [id])
+  transaction Transaction @relation(fields: [transaction_id], references: [id])
+  showtime    Showtimes   @relation(fields: [showtime_id], references: [id])
+}
+
+model Transaction {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id        String   @db.ObjectId
+  movie_id       String   @db.ObjectId
+  showtime_id    String   @db.ObjectId
+  date           DateTime @default(now())
+  total_price    Int
+  bookinng_seats String[]
+  status         String   @default("pending") // pending, success, failed
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user     User      @relation(fields: [user_id], references: [id])
+  movie    Movies    @relation(fields: [movie_id], references: [id])
+  showtime Showtimes @relation(fields: [showtime_id], references: [id])
+  Ticket   Ticket[]
+}
+
+model User {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  age         Int
+  balance     Int           @default(0)
+  createdAt   DateTime      @default(now()) @db.Date
+  name        String
+  password    String
+  role        String        @default("user")
+  updatedAt   DateTime      @updatedAt
+  username    String        @unique
+  Transaction Transaction[]
+  Ticket      Ticket[]
+}
