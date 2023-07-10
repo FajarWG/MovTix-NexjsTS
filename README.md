@@ -1,35 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Logo](https://i.ibb.co/Pjnrdrx/tixmov-github.png)
 
-## Getting Started
+# TixMov - Fullstack NextJS-TS
 
-First, run the development server:
+Welcome to MovieTix, your ultimate destination for purchasing tickets to the latest blockbusters! With our user-friendly website, you can effortlessly browse through a wide selection of movies, view showtimes at your favorite theaters, and secure your tickets in just a few clicks.
+
+Say goodbye to long queues and sold-out screenings! Our seamless booking process, coupled with secure payment options, ensures a hassle-free experience from start to finish.
+
+## Run Locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  git clone https://github.com/FajarWG/TixMov-NexjsTS.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to the project directory
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+  cd TixMov-NexjsTS
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Install dependencies
 
-## Learn More
+```bash
+  npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Start the server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+  npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Tech Stack
 
-## Deploy on Vercel
+**Client:** NextJS, TailwindCSS, Typescript
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Server:** NextJS, Prisma, MongoDB
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# MovTix-NexjsTS
+## Screenshots
+
+![Register Page](https://i.ibb.co/99WXJKm/Screenshot-2023-07-10-at-11-00-03-PM.png)
+
+![Homepage](https://i.ibb.co/5Fsw8kV/Screenshot-2023-07-10-at-10-59-31-PM.png)
+
+![Order Page](https://i.ibb.co/Z6z4fwN/Screenshot-2023-07-10-at-11-01-23-PM.png)
+
+![Transaction Page](https://i.ibb.co/VtSZCvq/Screenshot-2023-07-10-at-11-02-34-PM.png)
+
+![Ticket Modal](https://i.ibb.co/yfzpgWH/Screenshot-2023-07-10-at-11-01-51-PM.png)
+
+## Support
+
+For support, email fajarwahyugumelar@gmail.com
