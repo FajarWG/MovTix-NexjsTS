@@ -12,6 +12,17 @@ export async function POST(req: Request) {
     return NextResponse.error();
   }
 
+  if (totalSeat == 0) {
+    return NextResponse.json(
+      {
+        error: "You must choose at least one seat",
+      },
+      {
+        status: 400,
+      }
+    );
+  }
+
   const movie = await prisma.movies.findUnique({
     where: {
       id,
