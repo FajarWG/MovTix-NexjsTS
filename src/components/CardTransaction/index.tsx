@@ -13,6 +13,7 @@ import { BiSolidUserCircle } from "react-icons/bi";
 
 import { useDisclosure } from "@mantine/hooks";
 import { Modal } from "@mantine/core";
+import axios from "axios";
 
 interface TransactionProps {
   transaction: Transaction;
@@ -117,13 +118,18 @@ const CardTransaction = ({ transaction, handleCancel }: TransactionProps) => {
       time: "",
     },
   });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getTicket = async () => {
     try {
-      const res = await useTicket(data.Ticket[0].id);
-      setTicket(res);
+      setIsLoading(true);
+      // const res = await useTicket(data.Ticket[0].id);
+      const res = await axios.get(`/api/ticket/${data.Ticket[0].id}`);
+      setTicket(res.data);
     } catch (err) {
       console.log(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -136,12 +142,10 @@ const CardTransaction = ({ transaction, handleCancel }: TransactionProps) => {
       time: data.showtime?.time,
     });
 
-    setTimeout(() => {
-      setData((prev) => ({
-        ...prev,
-        status: "Cancel",
-      }));
-    }, 1500);
+    setData((prev) => ({
+      ...prev,
+      status: "Cancel",
+    }));
   };
 
   useEffect(() => {
@@ -228,7 +232,7 @@ const CardTransaction = ({ transaction, handleCancel }: TransactionProps) => {
                 text="Check Ticket"
                 size={"xs"}
                 style={"primary"}
-                disable={data.status != "Success"}
+                disable={data.status != "Success" || isLoading}
                 onClick={open}
               />
             </div>

@@ -31,7 +31,6 @@ const Page = () => {
 
       toast.success("Transaction Canceled");
       router.refresh();
-      router.prefetch("/transactions");
     } catch (error) {
       toast.error("Failed to cancel transaction");
     }
