@@ -21,33 +21,34 @@ const Page = () => {
     event.preventDefault();
     setIsLoading(true);
 
-    event.preventDefault();
-
     signIn("credentials", {
       username,
       password,
       redirect: false,
-    }).then((callback) => {
-      if (callback?.ok) {
+    })
+      .then((res: any) => {
+        if (res.error == "Username not found") {
+          return toast.error("Username not found");
+        }
+        if (res.error == "Password is incorrect") {
+          return toast.error("Password is incorrect");
+        }
+
+        toast.success("Login success");
         router.refresh();
-      }
-
-      if (callback?.error) {
-        throw new Error("Wrong Credentials");
-      }
-    });
-
-    axios
-      .get("/api/user")
-      .then((res) => {
-        console.log(res);
+        router.push("/");
+        axios
+          .get("/api/user")
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
-      .catch((err) => {
-        console.log(err);
+      .finally(() => {
+        setIsLoading(false);
       });
-
-    toast.success("Login success");
-    router.push("/");
   };
 
   return (

@@ -13,6 +13,7 @@ interface CardMovieProps {
   age: number;
   show: boolean;
   releaseDate: string;
+  status: string;
 }
 
 const CardMovie = ({
@@ -24,8 +25,19 @@ const CardMovie = ({
   age,
   show,
   releaseDate,
+  status,
 }: CardMovieProps) => {
   const router = useRouter();
+
+  const statusMovie = (status: string) => {
+    if (status == "now_playing") {
+      return "Now Playing";
+    } else if (status == "upcoming") {
+      return "Coming Soon";
+    } else {
+      return "Not Available";
+    }
+  };
 
   return (
     <div className="p-2 max-w-md">
@@ -51,8 +63,13 @@ const CardMovie = ({
               <div className="text-sm text-gray-400">
                 {desc.slice(0, 100)}...
               </div>
-              <div className="flex text-sm font-bold text-a text-green-500">
-                Rp.{price}
+              <div className="text-xs text-gray-400">
+                Release Date : {releaseDate}
+                <br />
+                Status : {statusMovie(status)}
+                <p className="flex text-sm font-bold text-a text-green-500">
+                  Price : Rp.{price}
+                </p>
               </div>
             </>
           ) : (
@@ -70,7 +87,7 @@ const CardMovie = ({
                 text="Buy Ticket"
                 size={"md"}
                 style={"primary"}
-                onClick={() => router.push(`/movies/${id}`)}
+                onClick={() => router.push(`/order/${id}`)}
               />
             </>
           )}

@@ -128,11 +128,6 @@ const CardTransaction = ({ transaction, handleCancel }: TransactionProps) => {
   };
 
   const handleClick = () => {
-    setData((prev) => ({
-      ...prev,
-      status: "Cancel",
-    }));
-
     handleCancel({
       idTransaction: data.id,
       idShowtime: data.showtime_id,
@@ -140,14 +135,13 @@ const CardTransaction = ({ transaction, handleCancel }: TransactionProps) => {
       seats: data.bookinng_seats,
       time: data.showtime?.time,
     });
-  };
 
-  const testClick = () => {
-    setData((prev) => ({
-      ...prev,
-      status: "Cancel",
-    }));
-    console.log(data);
+    setTimeout(() => {
+      setData((prev) => ({
+        ...prev,
+        status: "Cancel",
+      }));
+    }, 1500);
   };
 
   useEffect(() => {

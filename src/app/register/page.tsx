@@ -125,7 +125,7 @@ const Page = () => {
               type="submit"
               className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
             >
-              Create account
+              {!isLoading ? "Create account" : "Loading..."}
             </button>
           </div>
         </div>

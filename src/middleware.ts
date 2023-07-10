@@ -5,7 +5,7 @@ export const config = {
     "/transactions",
     "/withdraw",
     "/topup",
-    "/movies/:id*",
+    "/order/:id*",
     "/transactions/",
   ],
 };

@@ -4,7 +4,6 @@
 import useTransaction from "@/hooks/useTransaction";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import CardTransaction from "@/components/CardTransaction";
 import { CancelTransaction, Transaction } from "@/types/";
@@ -32,6 +31,7 @@ const Page = () => {
 
       toast.success("Transaction Canceled");
       router.refresh();
+      router.prefetch("/transactions");
     } catch (error) {
       toast.error("Failed to cancel transaction");
     }

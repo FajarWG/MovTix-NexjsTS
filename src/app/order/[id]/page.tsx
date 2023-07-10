@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import { useParams, useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import Loading from "@/components/Loading";
 
 type Seat = {
   [key: string]: boolean;
@@ -303,7 +304,7 @@ const MovieDetails = ({ params }: any) => {
             disabled={isLoading}
             className="py-2.5 px-4 text-center rounded-full duration-150 flex items-center justify-center gap-x-1 text-sm text-white font-medium bg-gray-800 hover:bg-gray-600 active:bg-gray-900 md:inline-flex"
           >
-            Buy Ticket
+            {!isLoading ? "Buy Ticket" : "Loading..."}
           </button>
         </div>
       </div>

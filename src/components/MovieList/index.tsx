@@ -23,6 +23,7 @@ const MovieList = ({ data, show }: MovieListProps) => {
             price={movie.ticket_price}
             releaseDate={movie.release_date}
             show={show}
+            status={movie.status}
           />
         ))
       ) : (

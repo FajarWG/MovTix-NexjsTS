@@ -16,7 +16,7 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.username || !credentials?.password) {
-          throw new Error("Invalid credentials");
+          throw new Error("Username and password are required");
         }
 
         const user = await prisma.user.findUnique({
@@ -26,7 +26,7 @@ export const authOptions: AuthOptions = {
         });
 
         if (!user || !user?.password) {
-          throw new Error("Invalid credentials");
+          throw new Error("Username not found");
         }
         const isCorrectPassword = await bcrypt.compare(
           credentials.password,
@@ -34,14 +34,14 @@ export const authOptions: AuthOptions = {
         );
 
         if (!isCorrectPassword) {
-          throw new Error("Invalid credentials");
+          throw new Error("Password is incorrect");
         }
         return user;
       },
     }),
   ],
   pages: {
-    signIn: "/",
+    signIn: "/login",
   },
   callbacks: {
     async jwt({ token, user }) {
