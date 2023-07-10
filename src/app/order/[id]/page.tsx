@@ -186,6 +186,8 @@ const MovieDetails = ({ params }: any) => {
     ) as unknown as Movie;
     if (time) {
       setSeats(time.seats);
+      setTempSeats(time.seats);
+      setSelectedSeats({});
     }
   }, [selectedTime, showTime]);
 
@@ -244,21 +246,25 @@ const MovieDetails = ({ params }: any) => {
           </p>
         </div>
         <div className="text-center font-semibold text-black mr-2">
+          <p className="text-base font-semibold text-black mr-2">
+            {" "}
+            Available Time :{" "}
+          </p>
           <Button
             text="15:00"
-            size={"xs"}
+            size={"sm"}
             style={"time"}
             onClick={() => onTimeSelect("15:00 PM")}
           />
           <Button
             text="17:00"
-            size={"xs"}
+            size={"sm"}
             style={"time"}
             onClick={() => onTimeSelect("17:00 PM")}
           />
           <Button
             text="19:00"
-            size={"xs"}
+            size={"sm"}
             style={"time"}
             onClick={() => onTimeSelect("19:00 PM")}
           />

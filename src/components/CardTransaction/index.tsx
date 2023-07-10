@@ -183,14 +183,15 @@ const CardTransaction = ({ transaction, handleCancel }: TransactionProps) => {
               <h2 className="text-sm font-bold text-black -ml-5">
                 {data.movie.title}
               </h2>
-              <div
+              <p
                 className={
-                  (data.status == "Success" ? "bg-green-400 " : "bg-red-400 ") +
-                  "font-semibold rounded-xl p-2"
+                  (data.status === "Success"
+                    ? "text-green-400 "
+                    : "text-red-400 ") + "font-bold rounded-xl text-xs"
                 }
               >
-                <p className="text-white text-xs">{data.status}</p>
-              </div>
+                {data.status === "Success" ? "Success" : "Canceled"}
+              </p>
             </div>
             <div className=" inline-flex items-center">
               <BiSolidUserCircle color="black" className="" />
