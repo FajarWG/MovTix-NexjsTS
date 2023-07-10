@@ -44,7 +44,7 @@ Start the server
 
 ![Homepage](https://i.ibb.co/5Fsw8kV/Screenshot-2023-07-10-at-10-59-31-PM.png)
 
-![Order Page](https://i.ibb.co/Z6z4fwN/Screenshot-2023-07-10-at-11-01-23-PM.png)
+![Order Page](https://i.ibb.co/L0s9qQj/Screenshot-2023-07-10-at-11-10-47-PM.png)
 
 ![Transaction Page](https://i.ibb.co/VtSZCvq/Screenshot-2023-07-10-at-11-02-34-PM.png)
 
