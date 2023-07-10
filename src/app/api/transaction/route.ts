@@ -1,14 +1,15 @@
 import prisma from "@/lib/prismadb";
 import { NextResponse } from "next/server";
-import getCurrentUser from "@/actions/getCurrents";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]/route";
 
 export async function GET() {
-  const user = (await getCurrentUser()) as any;
+  const user = (await getServerSession(authOptions)) as any;
 
   try {
     const transaction = await prisma.transaction.findMany({
       where: {
-        user_id: user.id,
+        user_id: user?.user.id,
       },
       include: {
         movie: true,
