@@ -9,7 +9,6 @@ export async function GET(req: Request, context: { params: any }) {
         movie_id: id,
       },
     });
-    console.log(showtimes);
     return NextResponse.json(showtimes);
   } catch (err) {
     console.log(err);

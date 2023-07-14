@@ -37,14 +37,9 @@ const Page = () => {
         toast.success("Login success");
         router.refresh();
         router.push("/");
-        axios
-          .get("/api/user")
-          .then((res) => {
-            console.log(res);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        axios.get("/api/user").catch((err) => {
+          console.log(err);
+        });
       })
       .finally(() => {
         setIsLoading(false);

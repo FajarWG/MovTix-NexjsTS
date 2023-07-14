@@ -69,7 +69,7 @@ const Navbar = ({ currentUser }: any) => {
                   </div>
                   <button
                     className="py-2.5 px-4 text-center rounded-full duration-150 flex items-center justify-center gap-x-1 text-sm text-white font-medium bg-gray-800 hover:bg-gray-600 active:bg-gray-900 md:inline-flex"
-                    onClick={() => signOut()}
+                    onClick={() => signOut({ callbackUrl: "/login" })}
                   >
                     Logout
                   </button>
