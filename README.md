@@ -4,8 +4,6 @@
 
 Welcome to MovieTix, your ultimate destination for purchasing tickets to the latest blockbusters! With our user-friendly website, you can effortlessly browse through a wide selection of movies, view showtimes at your favorite theaters, and secure your tickets in just a few clicks.
 
-Say goodbye to long queues and sold-out screenings! Our seamless booking process, coupled with secure payment options, ensures a hassle-free experience from start to finish.
-
 ## Run Locally
 
 Clone the project
@@ -20,10 +18,16 @@ Go to the project directory
   cd TixMov-NexjsTS
 ```
 
-Install dependencies
+Install dependencies (Minimal NodeJS v18)
 
 ```bash
   npm install
+```
+
+Generate Prisma Client
+
+```bash
+  npx prisma generate
 ```
 
 Start the server
